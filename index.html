@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pierre Stone</title>
+
+<!-- Fonte da biografia -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+/* RESET E FONTES */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* HERO COM GRADIENTE ESCURO E CONTEÚDO NO CANTO INFERIOR */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("foto.jpg") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding: 60px 40px;
+  position: relative;
+}
+
+/* TITULO E SUBTITULO */
+h1 {
+  font-size: 60px;
+  margin: 0;
+  color: white;
+}
+
+p.subtitle {
+  color: #ccc;
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+/* BOTOES */
+button {
+  padding: 14px 30px;
+  margin: 10px 0 10px 0;
+  font-size: 18px;
+  border-radius: 30px;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: 0.3s all ease;
+  background: transparent;
+  color: white;
+}
+
+button:hover {
+  background: white;
+  color: black;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px white;
+}
+
+/* CONTAINER DE BOTOES */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* SETA ANIMADA NO CANTO INFERIOR ESQUERDO */
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  font-size: 30px;
+  color: white;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+
+/* BIOGRAFIA SOBRE FOTO2 COM GRADIENTE ESCURO */
+.bio {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("foto2.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.bio.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bio-content {
+  max-width: 800px;
+  color: white;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.bio-content p {
+  margin: 0;
+}
+
+.bio-content h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+/* REDES SOCIAIS */
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.socials a {
+  color: white;
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #1DB954;
+  transform: scale(1.2);
+}
+
+/* TERCEIRA SEÇÃO - FOTO3 COM GRADIENTE ESCURO */
+.contact {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("foto3.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+/* CONTEÚDO DA TERCEIRA SEÇÃO */
+.contact-content {
+  max-width: 800px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* BOTÃO NA TERCEIRA SEÇÃO */
+.contact-content button {
+  padding: 14px 30px;
+  margin-top: 15px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: 0.3s all ease;
+  background: transparent;
+  color: white;
+}
+
+.contact-content button:hover {
+  background: white;
+  color: black;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px white;
+}
+
+/* YOUTUBE PLAYER RESPONSIVO WIDESCREEN 16:9 - OCUPA QUASE TODA A LARGURA */
+.youtube-player {
+  width: 100vw;            /* ocupa toda a largura da tela */
+  max-width: 100%;          /* não ultrapassa a tela */
+  position: relative;
+  padding-bottom: 56.25%;   /* proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin: 20px 0 0 0;
+}
+
+.youtube-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 16px;
+}
+</style>
+
+<!-- ICONES FONT AWESOME -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Pierre Stone</h1>
+  <p class="subtitle">Pop • Reggaeton • R&B</p>
+
+  <div class="buttons">
+    <a
+      href="https://onerpm.link/377730212347?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAQZrxRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAacZEml9NxQAgIc8v8N2mrWBPvqK9Ufr0pImZ9xlnU6NH1i6GQVdAIGFu9-BnA_aem_6PnIHqHafg9ahtP0qSMcvA"
+      target="_blank"
+      ><button>Ouvir EP</button></a
+    >
+    <a href="https://www.youtube.com/@PierreStone" target="_blank"
+      ><button>Ver Vídeos</button></a
+    >
+  </div>
+
+  <a href="#bio" class="scroll-down">⌄</a>
+</section>
+
+<!-- BIOGRAFIA SOBRE FOTO2 -->
+<section class="bio" id="bio">
+  <div class="bio-content">
+    <h2>Biografia</h2>
+    <p>
+      Pierre Stone, natural de Barretos, São Paulo, descobriu cedo sua paixão
+      pela música. Desde a infância, o cantor, compositor e dançarino dedica-se
+      a criar canções que conectem e emocionem o público. Em busca de expandir
+      sua carreira, Pierre mudou-se para a capital paulista, onde, em parceria
+      com a Cren Shaw Records, lançou seu primeiro single, “Dança e Rebola”, uma
+      vibrante mistura de ritmos que representa a alegria e a energia do Brasil.
+      Paralelamente, pela PH Music, apresenta lançamentos independentes como o
+      pop reggaeton “Tu Sabes”, com uma batida envolvente e dançante, e seu
+      trabalho mais recente, “Idiota”, um reggaeton romântico que explora temas
+      de amor e saudade. Com uma determinação incansável, Pierre segue firme em
+      sua missão de levar sua música ao mundo.
+    </p>
+
+    <div class="socials">
+      <a
+        href="https://open.spotify.com/artist/0QfL5zptBASRRAJaFz6uw7?si=MeXsJ1yaTc6HY66oN-JlDA"
+        target="_blank"
+        ><i class="fab fa-spotify"></i
+      ></a>
+      <a href="https://www.youtube.com/@PierreStone" target="_blank"
+        ><i class="fab fa-youtube"></i
+      ></a>
+      <a
+        href="https://www.instagram.com/pierrestoneoficial?igsh=MXhwNjU0azlrdmRwZA=="
+        target="_blank"
+        ><i class="fab fa-instagram"></i
+      ></a>
+      <a
+        href="https://www.instagram.com/pierrestoneoficial?igsh=MXhwNjU0azlrdmRwZA=="
+        target="_blank"
+        ><i class="fab fa-tiktok"></i
+      ></a>
+    </div>
+  </div>
+  <a href="#contact" class="scroll-down">⌄</a>
+</section>
+
+<!-- TERCEIRA SEÇÃO - CONTATO -->
+<section class="contact" id="contact">
+  <div class="contact-content">
+    <h2>Entre em Contato</h2>
+
+    <a href="mailto:pedrohenriquephmusic@gmail.com">
+      <button>Entrar em Contato</button>
+    </a>
+
+    <div class="youtube-player">
+      <iframe
+        src="https://www.youtube.com/embed/szuonufdx6Q"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+  <a href="#hero" class="scroll-down">⌄</a>
+</section>
+
+<script>
+// FADE-IN AO ROLAR BIO
+window.addEventListener("scroll", function () {
+  const bio = document.querySelector(".bio");
+  const bioTop = bio.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+  if (bioTop < windowHeight - 100) {
+    bio.classList.add("show");
+  }
+});
+</script>
+
+</body>
+</html>
